@@ -7,6 +7,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const notify = require('gulp-notify');
 const uglify = require('gulp-uglify');
+const gutil = require('gulp-util');
 
 gulp.task('less-css', function() {
 	/**
@@ -36,7 +37,8 @@ gulp.task('js', function() {
 						 .pipe(concat('plugin.js'))
 						 .pipe(gulp.dest('./dist/js'))
 						 .pipe(rename({suffix: '.min'}))
-						 .pipe(uglify())						 
+						 .pipe(uglify())
+						 .on('error', function(err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })						 
 						 .pipe(gulp.dest('./dist/js'))
 						 .pipe(notify({message: 'js 处理完成'}))
 })
