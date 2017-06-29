@@ -10,5 +10,5 @@ npm install
 
 npm start
 ```
->
-enjoy your jquery plugin development!
+
+> enjoy your jquery plugin development!
